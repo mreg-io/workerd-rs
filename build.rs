@@ -19,6 +19,7 @@ fn main() {
     if !path.is_file() {
         download_workerd(package, version.as_str(), root).unwrap();
     }
+    println!("cargo:rustc-env=WORKERD_PATH={}", path.to_str().unwrap());
 }
 
 fn get_package_and_path(root: &Path) -> (&'static str, Box<Path>) {
